@@ -1,0 +1,55 @@
+{% extends 'base.html.twig' %}
+
+
+    
+    {% block title %}
+        
+    {% endblock %}
+    
+    {% block stylesheet %}
+     
+       
+    {% endblock %}
+
+
+
+{% block body %}
+	<style>
+       
+	   a:link 
+	{ 
+ 	text-decoration:none; 
+	} 
+       
+		
+	</style>
+
+    <button class="btn btn-warning my-2 my-sm-0" type="submit" ><a href="/home">Back</a></button>
+
+	<div class="container">
+		<div class="row">
+        
+
+            <div class="col-md-12">
+
+                
+                
+                    <img src="http://placeimg.com/640/480/any" class="card-img-top" alt="...">
+                        
+                            <h1 class="card-title">{{post.title}}</h1>
+                                <p>{{post.content}}.</p>
+                                <p>{{post.author}} - {{post.createdAt|date("d/m/Y")}}</p>
+                                
+		
+            </div>
+	
+        </div>
+
+	</div>
+    {% block javascripts %}
+
+    {% endblock %}
+{% endblock %}
+
+
+

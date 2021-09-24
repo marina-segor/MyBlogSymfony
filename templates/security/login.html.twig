@@ -1,0 +1,98 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Log in!{% endblock %}
+
+{% block body %}
+
+<style>
+    body{
+        background-image: url("../bundles/easyadmin/images/fond2.jpg");
+        background-size: cover;
+    }
+    .container{
+        max-width: 1300px;
+        margin: auto;
+        display: flex;
+        padding: 0 2rem;
+        justify-content: center;
+        flex-wrap: wrap;
+        margin-top: 50px;
+        position: relative;
+        
+        
+    }
+
+    .col {
+        margin: 10px;
+        padding: 50px 50px 0px 50px;
+    }
+
+    p {
+        margin-bottom: 40px;
+    }
+
+    .btn {
+        color:white;
+    }
+</style>
+
+<form method="post">
+    {% if error %}
+        {# <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div> #}
+    {% endif %}
+
+    {% if app.user %}
+        <div class="mb-3">
+            You are logged in as {{ app.user.username }}, <a href="{{ path('app_logout') }}">Logout</a>
+        </div>
+    {% endif %}
+
+    <div class="container">
+        {# <div class="row"> #}
+            <div class="col">
+                <h1 class="h3 mb-3 font-weight-normal">Sign in</h1>
+    
+                    <div class="card mb-3">
+                        <label for="inputEmail">Email</label>
+                             <input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control" autocomplete="email" 
+                             {# required autofocus: "vauillez renseigner ce champ, oblige à mettre un mdp #}>
+                        <label for="inputPassword">Password</label>
+                             <input type="password" name="password" id="inputPassword" class="form-control" autocomplete="current-password"
+                              {# required #}
+                              >
+
+                            <input type="hidden" name="_csrf_token"
+                         value="{{ csrf_token('authenticate') }}">
+
+                         {#
+                          Uncomment this section and add a remember_me option below your firewall to activate remember me functionality.
+                              See https://symfony.com/doc/current/security/remember_me.html
+
+                             <div class="checkbox mb-3">
+                                 <label>
+                                     <input type="checkbox" name="_remember_me"> Remember me
+                                 </label>
+                             </div>
+                             #}
+
+                           <button class="btn btn-warning my-2 my-sm-0" type="submit" name="signup" ><a href="/home ">Sign-in</a></button>
+                 </div>
+            </div>
+        {# </div> #}
+     
+
+    
+        {# <div class="row"> #}
+            <div class="col">
+                <h1 class="h3 mb-3 font-weight-normal">Hello, Friend !</h1>
+                <p>Enter your details and start your journey with us!</p>
+    
+                <div class="card mb-3">
+                   
+                         <button class="btn btn-warning my-2 my-sm-0" type="submit" ><a href="/register ">Sign-up</a></button>
+                </div>
+            </div>
+      {# </div>   #}
+    </div>
+</form>
+{% endblock %}

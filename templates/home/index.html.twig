@@ -1,0 +1,148 @@
+{% extends 'base.html.twig' %}
+
+
+    
+    {% block title %}
+        
+    {% endblock %}
+    
+    {% block stylesheet %}
+     
+    {% endblock %}
+
+
+
+{% block body %}
+	<style>
+
+        .hero-img {
+            display:flex;
+            justify-content: center;
+            height: 200px;
+            background-size: cover;
+            margin-bottom: 25px;
+            position: relative;
+            border-radius: 10px;
+            background-image: url("https://image.freepik.com/photos-gratuite/ecole-fournit-vue-dessus-fond-du-tableau-espace-libre_73683-2217.jpg");
+        }
+        .texte{
+            font-family: "Cabin Sketch";
+            color: white;
+            position: absolute;
+            top: 100px;
+           
+        }
+     
+	</style>
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="#">My Blog</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"  data-bs-target="#navbarColor03" aria-controls="navbarColor03" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+    <div class="collapse navbar-collapse" id="navbarColor03">
+      <ul class="navbar-nav me-auto">
+        <li class="nav-item">
+          <a class="nav-link active" href="/home">Home
+            <span class="visually-hidden">(current)</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Comments</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Favorites</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">About</a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Article List</a>
+          <div class="dropdown-menu">
+            <a class="dropdown-item" href="#">Action</a>
+            <a class="dropdown-item" href="#">Another action</a>
+            <a class="dropdown-item" href="#">Something else here</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="#">Separated link</a>
+          </div>
+        </li>
+      </ul>
+      <form class="d-flex">
+        {# <input class="form-control me-sm-2" type="text" placeholder="Search"> #}
+        <button class="btn btn-secondary my-2 my-sm-0" type="submit" ><a href="/login">LogOut</a></button>
+      </form>
+    </div>
+  </div>
+</nav>
+    
+        <div class="row">
+            <div class="hero-img">
+                <button type="button" class="btn btn-outline-warning"><h1>Rêvez avec nous...</h1>
+                <br>Un Blog pour échanger vos idées afin d'améliorer le monde</button>
+                {# <p class="text-warning">Un Blog pour échanger vos idées afin d'améliorer le monde</p> #}
+            </div>
+        </div>
+    
+    
+	<div class="container">
+		<div class="row" data-aos="fade-up">
+        {% for post in posts %}
+
+            <div class="col-md-4" >
+
+                <div class="card border-warning mb-3">
+                    <img src="http://placeimg.com/640/480/any" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h3 class="card-header">{{post.title}}</h3>
+                                <h5 class="card-text">{{post.content}}.</h5>
+                                <br>
+                                <figure class="text-end">
+                                    <figcaption class="blockquote-footer">
+                                        Written by <cite title="Source Title">{{post.author}}</cite>
+                                    </figcaption>
+                                </figure>
+                                <a href={{path("show_post", {'id': post.id})}} class="btn btn-outline-warning">Read Article</a>
+                        </div>
+                </div>
+                
+            </div>
+
+        <div class="col-md-4" data-aos="fade-up">
+            <div class="card mb-3">
+                <h3 class="card-header">{{post.title}}</h3>
+                    <div class="card-body">
+                        <h5 class="card-title"> {{post.content}}</h5>
+                        <br>
+                            <figure class="text-end">
+                                <figcaption class="blockquote-footer">
+                                Written by <cite title="Source Title">{{post.author}}</cite>
+                                </figcaption>
+                            </figure>
+                    </div>
+
+                     <img src="http://placeimg.com/640/480/any"class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <a href={{path("show_post", {'id': post.id})}} class="btn btn-outline-secondary">Read Article</a>
+                        </div>
+                        {# <div class="card-footer text-muted">
+                           {{post.createdAt|date("d/m/Y")}}
+                        </div> #}
+            </div>
+            
+        </div>
+		{% endfor %}
+        </div>
+
+	</div>
+    {% block javascripts %}
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+        <script>
+          AOS.init();
+        </script>
+    {% endblock %}
+{% endblock %}
+
+
+

@@ -1,0 +1,55 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Register{% endblock %}
+
+{% block body %}
+<style>
+ body{
+        background-image: url("../bundles/easyadmin/images/fond1.jpg");
+        background-size: cover;
+    }
+
+.form{
+        max-width: 1300px;
+        margin: auto;
+        display: flex;
+        padding: 0 2rem;
+        justify-content: center;
+        flex-wrap: wrap;
+        margin-top: 50px;
+        position: relative;
+        
+        
+    }
+
+    .col {
+        margin: 200px;
+        padding: 100px 300px 0px 200px;
+    }
+
+    label {
+        display:flex;
+        
+    }
+</style>
+
+    <div class="container">
+        <div class="col">
+            <h1>Register</h1>
+                <div class="card mb-3">
+             {{ form_start(registrationForm) }}
+                .
+                <p> {{ form_row(registrationForm.username) }} 
+                 {{ form_row(registrationForm.email) }}
+                 {{ form_row(registrationForm.plainPassword, {
+            label: 'Password'
+                 }) }} </p>
+        
+             {{ form_row(registrationForm.agreeTerms) }}
+
+        <button type="submit" class="btn btn-warning my-2 my-sm-0"><a href="./home">Register</a></button>
+    {{ form_end(registrationForm) }}
+            </div>
+        </div>
+    </div>
+{% endblock %}
